@@ -1,117 +1,106 @@
 # 📊 Olist Sales & Order Funnel Analysis
 
-An interactive **Power BI dashboard** built using the **Olist Brazilian E-Commerce Dataset** to analyze sales performance, customer order flow, delivery efficiency, and customer satisfaction. The project combines **SQL**, **Python**, and **Power BI** to transform raw e-commerce data into meaningful business insights.
-
----
-
-# 🖼 Dashboard Preview
+An end-to-end data analytics project built on Olist's real Brazilian e-commerce dataset (100K+ orders, 2017–2018) — covering the full pipeline from raw, messy multi-table data to a fully designed, interactive Power BI dashboard.
 
 ![Dashboard Preview](dashboard.png)
 
 ---
 
-# 📌 Project Objectives
+## 📌 Project Overview
 
-- Analyze overall sales performance
-- Understand the customer order funnel
-- Track delivery performance
-- Identify top-performing product categories
-- Build an interactive business dashboard for decision-making
+This project simulates a real business analytics workflow, end to end:
 
----
+1. **SQL** — Loaded 8 raw CSV tables into a MySQL database and joined them to build a clean master dataset
+2. **Python** — Cleaned the data and engineered features (delivery delay, satisfaction labels, monthly revenue, customer funnel stages)
+3. **Power BI** — Designed an interactive, branded dashboard with KPIs, a conversion funnel, revenue trends, delivery performance, and category insights
 
-# 🛠 Tools & Technologies
-
-- Power BI
-- Power Query
-- DAX
-- MySQL
-- Python (Pandas)
-- Git
-- GitHub
+**Goal:** Identify where customers drop off in the order journey, track revenue trends, and measure delivery performance to support data-driven operational decisions.
 
 ---
 
-# 📈 Dashboard Features
+## 🛠️ Tech Stack
 
-### KPI Cards
-- 💰 Total Revenue
-- 📦 Total Orders
-- 🛒 Average Order Value
-- 🚚 On-Time Delivery Rate
-
-### Visualizations
-- 📊 Order Funnel Analysis
-- 📈 Monthly Revenue Trend
-- 🍩 Delivery Performance
-- 📦 Top 10 Categories by Revenue
-
-### Interactive Filters
-- Payment Type
-- Customer State
-- Year
+| Layer | Tools |
+|---|---|
+| Database | MySQL, MySQL Workbench |
+| Data Processing | Python (Pandas, NumPy, SQLAlchemy) — Jupyter Notebook |
+| Visualization | Power BI, Power Query, DAX |
+| Version Control | Git, GitHub |
 
 ---
 
-# 💡 Key Business Insights
-
-- Generated **$15.61M** in total revenue.
-- Processed **98K+ customer orders**.
-- Achieved an **on-time delivery rate of 91%**.
-- Health & Beauty was the highest revenue-generating category.
-- Revenue showed steady growth throughout **2017–2018**.
-- Most customers successfully progressed through the order fulfillment funnel with minimal drop-off.
-
----
-
-# 📂 Repository Contents
+## 📂 Repository Structure
 
 ```
-📁 olist-sales-and-order-funnel-analysis
-│
-├── README.md
+├── sql/
+│   └── queries.sql                  # Table joins, funnel stage query, data exploration
+├── python/
+│   ├── 01_setup.ipynb               # Load CSVs into MySQL
+│   └── 02_cleaning_analysis.ipynb   # Cleaning, feature engineering, funnel calc
+├── data/
+│   ├── cleaned_master.csv           # Final cleaned dataset (98,815 rows)
+│   └── funnel_data.csv              # Funnel stage summary
+├── screenshots/
+│   └── dashboard_overview.png
 ├── Olist_Ecommerce_Analytics_Dashboard.pbix
-├── Dashboard.pdf
-└── dashboard.png
+└── README.md
 ```
 
 ---
 
-# 📊 Dashboard Overview
+## 🔍 Process
 
-This dashboard enables business users to:
+### 1. Data Loading & SQL (MySQL)
+- Loaded 8 raw tables (orders, customers, payments, reviews, items, products, sellers, category translation) into MySQL
+- Joined 6 tables to build a master dataset — **118,390 rows** after filtering canceled orders and null payments
+- Wrote a funnel-stage query tracking orders from placement through review
 
-- Monitor sales performance
-- Track monthly revenue trends
-- Analyze order fulfillment stages
-- Evaluate delivery performance
-- Compare product category performance
-- Filter insights by payment type, customer state, and year
+### 2. Data Cleaning & Feature Engineering (Python)
+- Removed duplicates, handled nulls, fixed data types → **98,815 clean rows**
+- Engineered features:
+  - `delivery_delay_days` — actual vs. estimated delivery
+  - `delivery_status` — On Time / Late / Unknown
+  - `satisfaction` — derived from review scores
+  - `total_order_value`, `purchase_month_year`
 
----
-
-# 🚀 Skills Demonstrated
-
-- Data Cleaning
-- Data Modeling
-- SQL Joins
-- Feature Engineering
-- DAX Measures
-- Power BI Dashboard Design
-- Business Intelligence
-- Data Visualization
-- Business Analytics
+### 3. Dashboard Design (Power BI)
+- 4 KPI cards: Total Revenue, Total Orders, Avg Order Value, On-Time Delivery %
+- 5-stage customer order funnel (gradient navy color scale)
+- Monthly revenue trend line chart
+- Delivery performance donut chart
+- Top 10 product categories by revenue
+- Sidebar filters: Payment Type, Customer State, Year
 
 ---
 
-# 📚 Dataset
+## 📊 Key Insights
 
-The project uses the **Olist Brazilian E-Commerce Public Dataset**, containing customer orders, payments, products, reviews, and delivery information from Brazil's largest online marketplace.
+- Generated **$15.61M** in total revenue across **98K+ orders**
+- Achieved an **on-time delivery rate of 91%**
+- **Health & Beauty** is the top-revenue category at **$1.42M**
+- Revenue showed consistent month-over-month growth from 2017 into early 2018
+- A **9% drop-off** occurs between order placement and customer review — a potential area to investigate for engagement improvement
 
 ---
 
-# 👩‍💻 Author
+## 🚀 Skills Demonstrated
+
+- SQL joins and querying across real-world relational tables
+- Data cleaning and feature engineering on messy, real e-commerce data in Python
+- Data modeling and DAX measures in Power BI
+- Designing a recruiter-ready, branded BI dashboard (not default Power BI styling)
+- End-to-end analytical thinking: raw data → analysis → business insight
+
+---
+
+## 📚 Dataset
+
+This project uses the **Olist Brazilian E-Commerce Public Dataset**, containing customer orders, payments, products, reviews, and delivery information from Brazil's largest online marketplace.
+
+---
+
+## 👩‍💻 Author
 
 **Hebah**
 
-If you found this project interesting, feel free to ⭐ this repository.
+If you found this project interesting, feel free to ⭐ this repository or reach out to discuss the approach.
